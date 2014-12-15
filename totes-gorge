@@ -1,0 +1,165 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<!--
+
+Nick Montfort
+ Original Python program:
+ 8 January 2009, Taroko Gorge National Park, Taiwan and Eva Air Flight 28
+ This JavaScript version, with links:
+ 13 May 2014
+
+Copyright (c) 2012 Nick Montfort <nickm@nickm.com>
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY
+SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR
+IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+-->
+<style type="text/css">
+/* <![CDATA[ */
+body {
+ background: cream;
+ color: blue;
+ margin: 0 24pt 0 24pt;
+ font-family: Futura, sans-serif;
+ font-size: 24pt;
+}
+div {
+ height: 32pt;
+}
+a {
+ color: grey;
+ text-decoration: none;
+}
+/* ]]> */
+</style>
+<script language="JavaScript" type="text/javascript">
+var t=0;
+var n=0;
+var paths=0;
+var above='Jay,Miley,Katy,Nikki,Bey,Justin,Kim,Kanye,Gucci'.split(',');
+var below='jean,Iphone,Fendi,vein,twitter,cushion,kitchen,front door'.split(',');
+var trans='tweet,tweet tweet,ride,ride,ride,message,enter,ride'.split(',');
+var imper='selfie,store,instagram,scan,retype,indirect,run,enter';
+imper=imper.split(',');
+var intrans='skim,wait,hover,pause,emote,dream,yell'.split(',');
+var s='s,'.split(',');
+var texture='rough,fine'.split(',');
+function rand_range(max) {
+ return Math.floor(Math.random()*(max+1));
+}
+function choose(array) {
+ return array[rand_range(array.length-1)];
+}
+function path() {
+ var p=rand_range(1);
+ var words=choose(above);
+ if ((words=='forest')&&(rand_range(3)==1)) {
+  words='monkeys '+choose(trans);
+ } else {
+  words+=s[p]+' '+choose(trans)+s[(p+1)%2];
+ }
+ words+=' the '+choose(below)+choose(s)+'.';
+ return words;
+}
+function site() {
+ var words='';
+ if (rand_range(2)==1) {
+  words+=choose(above);
+ } else {
+  words+=choose(below);
+ }
+ words+='s '+choose(intrans)+'.';
+ return words;
+}
+function cave() {
+ var adjs=('encompassing,'+choose(texture)+',sold,bright,new,clean,warm,exclusive,cute,branded').split(',');
+ var target=1+rand_range(3);
+ while (adjs.length>target) {
+  adjs.splice(rand_range(adjs.length),1);
+  }
+ var words='\u00a0\u00a0'+choose(imper)+' the '+adjs.join(' ')+' \u2014';
+ return words;
+}
+function do_line() {
+ var main=document.getElementById('main');
+ if (t<=25) {
+  t+=1;
+ } else {
+  main.removeChild(document.getElementById('main').firstChild);
+ }
+ if (n===0) {
+  text=' ';
+ } else if (n==1) {
+  paths=2+rand_range(2);
+  text=path();
+ } else if (n<paths) {
+  text=site();
+ } else if (n==paths) {
+  text=path();
+ } else if (n==paths+1) {
+  text=' ';
+ } else if (n==paths+2) {
+  text=cave();
+ } else {
+  text=' ';
+  n=0;
+ }
+ n+=1;
+ text=text.substring(0,1).toUpperCase()+text.substring(1,text.length);
+ last=document.createElement('div');
+ last.appendChild(document.createTextNode(text));
+ main.appendChild(last);
+}
+function poem() {
+ setInterval(do_line, 1200);
+}
+</script>
+  <title>Tour The Stars</title>
+</head>
+<body onload="poem()">
+<div style="float:right; margin-top:12px; color:#0b3; height:60pt">
+<div>Totally Gorge &middot; 2014-12-15 by <a href="http://leetusman.com">Lee Tusman</a></div>
+<del><a href="taroko_gorge_original.html">Nick Montfort</a></del><br/>
+<del><a href="http://retts.net/tokyogarage.html">Scott Rettberg</a></del><br/>
+<del><a href="http://luckysoap.com/generations/gorge.html">J.R. Carpenter</a></del><br/>
+<del><a href="http://luckysoap.com/generations/whisperwire.html">J.R. Carpenter</a></del><br/>
+<del><a href="http://luckysoap.com/alongthebrinybeach/">J.R. Carpenter</a></del><br/>
+<del><a href="http://talanmemmott.com/drp_web/text_gen/toygarbage/">Talan Memmott</a></del><br/>
+<del><a href="http://exinfoam.wordpress.com/2011/07/18/yoko-engorged/">Eric Snodgrass</a></del><br/>
+<del><a href="http://samplereality.com/elit/takeigeorge.html">Mark Sample</a></del><br/>
+<del><a href="http://polyaesthetics.org/AloneEngaged.html">Maria Engberg</a></del><br/>
+<del><a href="http://www.madelineklink.com/portfolio/fredandgeorge.html">Flourish Klink</a></del><br/>
+<del><a href="http://www.eblong.com/zarf/argot-ogre-ok.html">Andrew Plotkin</a></del><br/>
+<del><a href="http://wintermute.org/brendan/?p=designer-gulch">Brendan Howell</a></del><br/>
+<del><a href="http://mason.gmu.edu/~asylvain/">Adam Sylvain</a></del><br/>
+<del><a href="http://academic.uprm.edu/flores/TarokoGary.html">Leonardo Flores</a></del><br/>
+<del><a href="http://alimahzoon.com/html/mp2ab/final2.html">Alireza Mahzoon</a></del><br/>
+<del><a href="http://thefwordsrt.appspot.com/cameltail.html">Sonny Rae Tempest</a></del><br/>
+<del><a href="http://berens.org/kib/elit/tournedo2.html">Kathi Inman Berens</a></del><br/>
+<del><a href="http://helenburgess.com/cheese/index.html">Helen Burgess</a></del><br/>
+<del><a href="http://www.artcalifornia.net/scholars_contemplate.html">Judy Malloy</a></del></br>
+<del><a href="http://mason.gmu.edu/~rbonsal1/DarkSideoftheWall.html">Bob Bonsall</a></del></br>
+<del><a href="http://www.sadiron.com/tacoma-grunge/">Chuck Rybak</a></del></br>
+<del><a href="http://zachwhalen.net/pg/forge/forge.html">Zach Whalen</a></del></br>
+<del><a href="http://springgunpress.com/leonardoflores/transmogrify">Leonardo Flores</a></del></br>
+<del><a href="http://www.digitalvitalism.com/take_ogre.html">John Pat McNamara</a></del></br>
+<del><a href="http://www.burling.org/jtburling/Wandering.html">James T. Burling</a></del></br>
+<del><a href="http://ha.art.pl/nick_montfort/wawoz_taroko.html">Piotr Marecki</a></del></br>
+<del><a href="http://tinysubversions.com/stuff/gorge/">Darius Kazemi</a></del></br>
+<a href="http://nickm.com">Nick Montfort &middot; 2014-10-17</a>
+</div>
+<div id="main"></div>
+</body>
+</html>
